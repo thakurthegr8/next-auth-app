@@ -1,7 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-input {
-  @apply w-[400px] focus:outline-none border border-gray-200 py-2 px-6 bg-zinc-100/40 rounded;
+@layer utilities {
+  .ripple::after {
+    content: "";
+    @apply bg-white  duration-1000 delay-300 rounded-full h-full w-1/2 absolute hidden;
+  }
+  .ripple:active::after {
+    @apply block animate-ping;
+  }
 }
+
+* {
+  font-family: "inter", sans-serif;
+}
+body {
+  @apply text-black text-sm sm:text-base;
+}
+/* typography */
+p {
+  @apply text-sm;
+}
+span {
+  @apply text-xs sm:text-sm;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold;
+}
+
+h1 {
+  @apply text-2xl sm:text-3xl md:text-5xl lg:text-7xl;
+}
+h2 {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-5xl;
+}
+h3 {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+}
+h4 {
+  @apply text-xl lg:text-2xl;
+}
+h5 {
+  @apply text-xl;
+}
+h6 {
+  @apply text-lg;
+}
+
+/* inputs */
+
+input,
+textarea,
+select {
+  @apply border-gray-300 bg-transparent border w-full hover:border-light-primary
+  px-4 py-2 
+  text-sm outline-none rounded-md;
+}
+
+/* buttons */
+
+button {
+  @apply px-4 py-2 text-sm flex justify-center items-center font-medium
+  disabled:bg-light-surface disabled:text-dark-surface
+  rounded-md transition-all relative overflow-hidden [&:not(:disabled)]:ripple
+  hover:contrast-125;
+}
+
+.btn-primary {
+  @apply bg-light-primary text-white  ;
+}
+.btn-secondary {
+  @apply bg-light-primary text-white ;
+}
+.btn-tertiary {
+  @apply bg-light-tertiary text-white  ;
+}
+.btn-surface {
+  @apply bg-light-surface text-black;
+}
+
+/* utils */
